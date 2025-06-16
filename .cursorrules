@@ -1,0 +1,78 @@
+1. 주로 커서의 규칙을 정의하는데 사용
+2. 특정 파일 또는 디렉터리에 대해 커서 움직임, 강조표시 등의 동작을 제어하는 규칙을 설정
+3. ex. 코드 내의 특정 단어를 강조 표시하거나 특정 파일에서 커서의 움직임을 제한하는 규칙을 정의
+
+Remix React Router TypeScript Supabase
+당신은 TypeScript, Node.js, React Router, React, Remix, Shadcn UI, Radix UI, Tailwind 및 Supabase 전문가입니다.
+
+핵심 원칙
+
+- 정확한 예시와 함께 간결하고 기술적인 TypeScript 코드를 작성하세요.
+- 함수형 및 선언적 프로그래밍 패턴을 사용하고 클래스는 피하세요.
+- 코드 중복보다 반복과 모듈화를 선호하세요.
+- 보조 동사가 포함된 설명적인 변수 이름을 사용하세요(예: isLoading, hasError).
+- 파일 구조: 내보낸 컴포넌트, 하위 컴포넌트, 헬퍼 함수, 정적 콘텐츠, 타입 순으로 구성하세요.
+
+명명 규칙
+
+- 디렉터리에는 소문자와 대시를 사용하세요(예: components/auth-wizard).
+- 컴포넌트는 명명된 내보내기를 선호하세요.
+- zod 를 사용하여 타입을 정의하세요.
+- 날짜와 시간 형식은 luxon 을 사용하세요.
+- 상수는 각폴더의 /constants.ts 확인 후 없으면 파일을 생성 후 저장하세요.
+- helper, 함수 들은 /core/utils 폴더에 확인 후 없으면 파일을 생성 후 저장하세요.
+- Form(react-router 사용), fetcher.Form 를 사용하세요. 폼을 만들 때는 항상 타입을 정의하세요.
+- Form 또는 fetcher.Form 을 사용하세요. InputPair, SelectPair, RadioGroupPair 컴포넌트를 사용가능하면 사용하고, 사용하지 않는다면 직접 만들어서 사용하세요.
+- try {} catch (error) {} 는 사용하지 마하세요.
+- Router.ComponentProps 사용 하고, 인터페이스를 제거하고 컴포넌트 props에서 바로 타입을 정의하세요. props 타입이 없다면 그때 interface, type을 사용하세요.
+- 테이블은 각 폴더의 schema.ts 파일에 정의하세요. 별도의 마이그레이션 파일을 만들지 마세요.
+- queries 를 만들경우 function, triggers, views 를 만드는게 성능면에서 좋을경우 변경해주세요. (위치는 sql/functions, sql/triggers, sql/views 폴더에 저장)
+- 사용하지 않은 코드, 빈 코드는 제거하세요.
+- queries.ts 파일을 생성하지 마세요. 파일은이미 각 폴더에 생성되어 있습니다. queries.ts 파일에 정의하세요.
+
+TypeScript 사용법
+
+- 모든 코드에 TypeScript를 사용하고 타입보다 인터페이스를 선호하세요.
+- 열거형(enum)을 피하고 대신 맵을 사용하세요.
+- TypeScript 인터페이스와 함께 함수형 컴포넌트를 사용하세요.
+
+구문 및 형식
+
+- 순수 함수에는 "function" 키워드를 사용하세요.
+- 조건문에서 불필요한 중괄호를 피하고 간단한 문장에는 간결한 구문을 사용하세요.
+- 선언적 JSX를 사용하세요.
+
+UI 및 스타일링
+
+- 컴포넌트 및 스타일링에는 Shadcn UI, Radix 및 Tailwind를 사용하세요.
+
+주요 규칙
+
+- Radix UI에서 직접 가져오지 마세요. 항상 Shadcn UI에서 UI 컴포넌트를 가져오세요.
+- Remix에서 직접 가져오지 마세요. 모든 @remix-run 가져오기는 "react-router"에서 가져와야 합니다.
+- 새 페이지를 만들 때는 항상 loader, action 및 meta 함수를 내보내세요.
+- 라우트 타입은 다음과 같이 가져와야 합니다: `import type { Route } from ./+types/... 별도의 타입을 생성하지 마세요.
+- `useLoaderData`는 더 이상 존재하지 않습니다. 대신 컴포넌트는 loaderData를 포함하는 Router.ComponentProps 타입 매개변수를 받습니다.
+- `useActionData`는 더 이상 존재하지 않습니다. 대신 컴포넌트는 actionData를 포함하는 Router.ComponentProps 타입 매개변수를 받습니다.
+- 페이지 컴포넌트에서 `useLoaderData` 또는 `useActionData`를 사용하지 마세요.
+- `loader` 함수는 Route.LoaderArgs 타입 매개변수를 받습니다.
+- `action` 함수는 Route.ActionArgs 타입 매개변수를 받습니다.
+- `meta` 함수는 Route.MetaFunction 타입 매개변수를 받습니다.
+- `meta`는 MetaFunction 타입을 반환합니다.
+- `json`은 더 이상 존재하지 않습니다. 대신 일반 객체를 반환하세요. 예: `export function loader({ request }: Route.LoaderArgs) { return { } }`
+- 상태 코드가 있는 응답을 반환할 때는 `data`를 사용하고, 그렇지 않으면 일반 객체를 반환하세요.
+- 성능 최적화를 진행해 주세요.
+
+주석
+
+- 주석은 한글로 작성하세요.
+- 기본적인 정보를 주석으로 제공 하세요.
+- 의도를 설명하는 주석 (두 객체를 비교할 때 어떤 객체보다 자기 객체에 높은 우선순위를 가지는 경우)
+- 의미를 명료하게 밝히는 주석으로 작성하세요.
+- 결과를 경고하는 주석으로 작성하세요.
+- 중요성을 강조하는 주석으로 작성하세요
+- 중복된거나 있으나 마나한 주석은 제거하세요
+- 오해할 여지가 있는 주석은 제거하세요.
+- 이력을 기록하는 주석은 제거하세요.
+- 함수나 변수로 표현할 수 있다면 주석은 달지 마세요.
+- 위치 표시, 닫는 괄호에 다는 주석, 공로, 저자 표시, 주석으로 처리한 코드, HTML 주석, 너무 많은 정보, 모호한 관계의 주석들은 달지 마세요.
