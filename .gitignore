@@ -1,5 +1,6 @@
 # dependencies
 /node_modules
+/react-router
 /.pnp
 .pnp.js
 
@@ -24,6 +25,8 @@ yarn-error.log*
 
 # IDE
 .idea/
+.cursor/
+.cursorrules
 .vscode/
 *.swp
 *.swo

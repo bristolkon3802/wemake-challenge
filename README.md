@@ -1,5 +1,9 @@
 # wemake
 
+- https://gist.github.com/bristolkon3802/1824f20851953a4234ea5449da807016
+
+###
+
 - 1.1 > routes 설정
 - 1.2 > root 설정
 - 1.3 > Layout 설정
